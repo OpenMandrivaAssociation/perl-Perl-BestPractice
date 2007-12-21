@@ -16,6 +16,7 @@ BuildRequires:	perl-devel
 %endif
 BuildRequires:	perl-PPI
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Perl::BestPractice is the (for now unofficial) companion module to the O'Reilly
