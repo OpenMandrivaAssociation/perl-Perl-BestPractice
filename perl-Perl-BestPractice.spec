@@ -1,22 +1,16 @@
 %define	module	Perl-BestPractice
-%define	name	perl-%{module}
-%define version 0.01
-%define release %mkrel 6
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		perl-%{module}
+Version:	0.01
+Release:	7
 License:	GPL or Artistic
 Group:		Development/Perl
 Summary:	Perl Best Practices, the (unofficial) companion module 
 Source0:	http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/%{module}-%{version}.tar.bz2
 Url:		http://search.cpan.org/dist/%{module}/
-%if %{mdkversion} < 1010
 BuildRequires:	perl-devel
-%endif
-BuildRequires:	perl-PPI
+BuildRequires:	perl(PPI)
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 Perl::BestPractice is the (for now unofficial) companion module to the O'Reilly
@@ -29,22 +23,41 @@ locate (and in some cases repair) issues raised by the book.
 %setup -q -n %{module}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
-%{__make} test
+make test
 
 %install
-rm -rf %{buildroot}
-%{makeinstall_std}
-
-%clean
-rm -rf %{buildroot}
+%makeinstall_std
 
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{perl_vendorlib}/Perl
 %{_mandir}/man3/*
+
+%changelog
+* Fri Sep 04 2009 Thierry Vignaud <tvignaud@mandriva.com> 0.01-6mdv2010.0
++ Revision: 430524
+- rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.01-5mdv2009.0
++ Revision: 241814
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Sat Sep 15 2007 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-3mdv2008.0
++ Revision: 86793
+- rebuild
+
+
+* Thu Aug 31 2006 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-2mdv2007.0
+- Rebuild
+
+* Thu Nov 24 2005 Guillaume Rousse <guillomovitch@mandriva.org> 0.01-1mdk
+- first mdk release
 
