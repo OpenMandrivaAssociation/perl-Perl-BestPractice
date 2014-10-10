@@ -2,7 +2,7 @@
 
 Name:		perl-%{module}
 Version:	0.01
-Release:	7
+Release:	8
 License:	GPL or Artistic
 Group:		Development/Perl
 Summary:	Perl Best Practices, the (unofficial) companion module 
