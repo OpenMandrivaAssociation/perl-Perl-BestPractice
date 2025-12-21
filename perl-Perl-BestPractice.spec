@@ -8,6 +8,7 @@ Group:		Development/Perl
 Summary:	Perl Best Practices, the (unofficial) companion module 
 Source0:	http://search.cpan.org/CPAN/authors/id/A/AD/ADAMK/%{module}-%{version}.tar.bz2
 Url:		https://search.cpan.org/dist/%{module}/
+BuildRequires:	make
 BuildRequires:	perl-devel
 BuildRequires:	perl(PPI)
 BuildArch:	noarch
